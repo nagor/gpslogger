@@ -3,7 +3,7 @@ package com.mendhak.gpslogger.loggers;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.RandomAccessFile;
+//import java.io.RandomAccessFile;
 import java.util.Date;
 import com.mendhak.gpslogger.common.Session;
 import com.mendhak.gpslogger.common.Utilities;

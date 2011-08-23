@@ -3,9 +3,9 @@ package com.mendhak.gpslogger.loggers;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.RandomAccessFile;
-import java.nio.channels.FileLock;
-import java.util.Date;
+//import java.io.RandomAccessFile;
+//import java.nio.channels.FileLock;
+//import java.util.Date;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -19,13 +19,13 @@ import android.location.Location;
 class Kml10FileLogger implements IFileLogger
 {
     private final static Object lock = new Object();
-    private boolean useSatelliteTime;
+    //private boolean useSatelliteTime;
     private File kmlFile;
-    private FileLock kmlLock;
+    //private FileLock kmlLock;
 
     Kml10FileLogger(File kmlFile, boolean useSatelliteTime)
     {
-        this.useSatelliteTime = useSatelliteTime;
+        //this.useSatelliteTime = useSatelliteTime;
         this.kmlFile = kmlFile;
     }
 
@@ -33,7 +33,7 @@ class Kml10FileLogger implements IFileLogger
     {
         try
         {
-
+/*
             Date now;
 
             if(useSatelliteTime)
@@ -44,8 +44,8 @@ class Kml10FileLogger implements IFileLogger
             {
                 now = new Date();
             }
-
-            String dateTimeString = Utilities.GetIsoDateTime(now);
+*/
+            //String dateTimeString = Utilities.GetIsoDateTime(now);
 
             if(!kmlFile.exists())
             {
@@ -90,7 +90,8 @@ class Kml10FileLogger implements IFileLogger
                 coordinates.appendChild(doc.createTextNode(coordText));
             }
 
-            Node documentNode = doc.getElementsByTagName("Document").item(0);
+//we do not need create empty waypoints. Them are useless in GMapsww           
+            /*Node documentNode = doc.getElementsByTagName("Document").item(0);
             Node newPlacemark = doc.createElement("Placemark");
 
             Node timeStamp = doc.createElement("TimeStamp");
@@ -112,6 +113,8 @@ class Kml10FileLogger implements IFileLogger
 
             documentNode.appendChild(newPlacemark);
 
+            */
+            
             String newFileContents = Utilities.GetStringFromNode(doc);
 
             synchronized(lock)
